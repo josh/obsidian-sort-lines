@@ -1,0 +1,10 @@
+{
+  "id": "obsidian-sort-lines",
+  "name": "Sort lines",
+  "version": "0.1.0",
+  "minAppVersion": "1.6.0",
+  "description": "Sort lines. Never gets tired.",
+  "author": "Joshua Peek",
+  "authorUrl": "https://github.com/josh",
+  "isDesktopOnly": false
+}
