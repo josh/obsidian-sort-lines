@@ -1,3 +1,3 @@
 # obsidian-sort-lines
 
-Sort lines in Obsidian. Never gets tired.
+Sorts lines in Obsidian. Never gets tired.
