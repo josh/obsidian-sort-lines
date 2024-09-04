@@ -35,7 +35,7 @@ module.exports = (() => {
 
       const startLine = editor.getCursor("from").line;
       const endLine = editor.getCursor("to").line;
-      if (startLine == endLine) return;
+      if (startLine === endLine) return;
 
       const lines = editor.getValue().split("\n");
       const selectedLines = lines.slice(startLine, endLine + 1);
