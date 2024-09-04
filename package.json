@@ -6,7 +6,7 @@
   "author": "Joshua Peek",
   "license": "MIT",
   "scripts": {
-    "test": "prettier --check ."
+    "test": "prettier --check . && tsc"
   },
   "dependencies": {
     "obsidian": ">=1.6.0"
