@@ -1,0 +1,11 @@
+{
+  "name": "obsidian-sort-lines",
+  "version": "0.1.0",
+  "description": "Sort lines in Obsidian. Never gets tired.",
+  "main": "main.js",
+  "author": "Joshua Peek",
+  "license": "MIT",
+  "devDependencies": {
+    "prettier": "^3.3.3"
+  }
+}
