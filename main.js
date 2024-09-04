@@ -25,6 +25,9 @@ module.exports = (() => {
       });
     }
 
+    /**
+     * @param {"asc" | "desc"} direction
+     */
     sort(direction) {
       const view = this.app.workspace.getActiveViewOfType(MarkdownView);
       if (!view) return;
