@@ -13,13 +13,19 @@ module.exports = (() => {
   class SortLinesPlugin extends Plugin {
     onload() {
       this.addCommand({
-        id: "sort-lines",
-        name: "Sort lines",
-        callback: this.sort.bind(this),
+        id: "sort-lines-asc",
+        name: "Sort Lines Ascending",
+        callback: () => this.sort("asc"),
+      });
+
+      this.addCommand({
+        id: "sort-lines-desc",
+        name: "Sort Lines Descending",
+        callback: () => this.sort("desc"),
       });
     }
 
-    sort() {
+    sort(direction) {
       const view = this.app.workspace.getActiveViewOfType(MarkdownView);
       if (!view) return;
       const { editor } = view;
@@ -31,7 +37,10 @@ module.exports = (() => {
       const lines = editor.getValue().split("\n");
       let selectedLines = lines.slice(startLine, endLine + 1);
       console.assert(selectedLines.length > 1, "Expected more than 1 line");
-      selectedLines.sort((a, b) => compare(a.trim(), b.trim()));
+      selectedLines.sort((a, b) => {
+        const result = compare(a.trim(), b.trim());
+        return direction == "desc" ? -result : result;
+      });
 
       editor.replaceRange(
         selectedLines.join("\n"),
