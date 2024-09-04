@@ -42,7 +42,7 @@ module.exports = (() => {
       console.assert(selectedLines.length > 1, "Expected more than 1 line");
       selectedLines.sort((a, b) => {
         const result = compare(a.trim(), b.trim());
-        return direction == "desc" ? -result : result;
+        return direction === "desc" ? -result : result;
       });
 
       editor.replaceRange(
