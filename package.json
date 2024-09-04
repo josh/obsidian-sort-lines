@@ -8,6 +8,9 @@
   "scripts": {
     "test": "prettier --check ."
   },
+  "dependencies": {
+    "obsidian": ">=1.6.0"
+  },
   "devDependencies": {
     "prettier": "^3.3.3"
   }
