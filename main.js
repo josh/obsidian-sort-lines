@@ -1,5 +1,3 @@
-"use strict";
-
 module.exports = (() => {
   const { Plugin, MarkdownView } = require("obsidian");
 
