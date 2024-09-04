@@ -38,7 +38,7 @@ module.exports = (() => {
       if (startLine == endLine) return;
 
       const lines = editor.getValue().split("\n");
-      let selectedLines = lines.slice(startLine, endLine + 1);
+      const selectedLines = lines.slice(startLine, endLine + 1);
       console.assert(selectedLines.length > 1, "Expected more than 1 line");
       selectedLines.sort((a, b) => {
         const result = compare(a.trim(), b.trim());
