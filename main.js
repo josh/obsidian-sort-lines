@@ -13,7 +13,7 @@ module.exports = (() => {
     onload() {
       this.addCommand({
         id: "sort-lines-asc",
-        name: "Sort Lines Ascending",
+        name: "Sort lines ascending",
         editorCheckCallback: (checking, editor, view) => {
           if (checking) {
             return this.hasMultilineSelection(editor);
@@ -24,7 +24,7 @@ module.exports = (() => {
 
       this.addCommand({
         id: "sort-lines-desc",
-        name: "Sort Lines Descending",
+        name: "Sort lines descending",
         editorCheckCallback: (checking, editor, view) => {
           if (checking) {
             return this.hasMultilineSelection(editor);

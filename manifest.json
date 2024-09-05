@@ -1,6 +1,6 @@
 {
   "id": "obsidian-sort-lines",
-  "name": "Sort Lines",
+  "name": "Sort lines",
   "version": "0.1.0",
   "minAppVersion": "1.6.0",
   "description": "Sorts lines. Never gets tired.",
