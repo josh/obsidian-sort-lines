@@ -1,5 +1,6 @@
 module.exports = (() => {
-  const { Plugin, MarkdownView } = require("obsidian");
+  const obsidian = require("obsidian");
+  const { Plugin } = obsidian;
 
   const { compare } = new Intl.Collator(navigator.language, {
     usage: "sort",
@@ -13,24 +14,21 @@ module.exports = (() => {
       this.addCommand({
         id: "sort-lines-asc",
         name: "Sort Lines Ascending",
-        callback: () => this.sort("asc"),
+        editorCallback: (editor, view) => this.sort("asc", editor),
       });
 
       this.addCommand({
         id: "sort-lines-desc",
         name: "Sort Lines Descending",
-        callback: () => this.sort("desc"),
+        editorCallback: (editor, view) => this.sort("desc", editor),
       });
     }
 
     /**
      * @param {"asc" | "desc"} direction
+     * @param {obsidian.Editor} editor
      */
-    sort(direction) {
-      const view = this.app.workspace.getActiveViewOfType(MarkdownView);
-      if (!view) return;
-      const { editor } = view;
-
+    sort(direction, editor) {
       const startLine = editor.getCursor("from").line;
       const endLine = editor.getCursor("to").line;
       if (startLine === endLine) return;
