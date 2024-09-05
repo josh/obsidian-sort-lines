@@ -14,28 +14,53 @@ module.exports = (() => {
       this.addCommand({
         id: "sort-lines-asc",
         name: "Sort Lines Ascending",
-        editorCallback: (editor, view) => this.sort("asc", editor),
+        editorCheckCallback: (checking, editor, view) => {
+          if (checking) {
+            return this.hasMultilineSelection(editor);
+          }
+          this.sort(editor, "asc");
+        },
       });
 
       this.addCommand({
         id: "sort-lines-desc",
         name: "Sort Lines Descending",
-        editorCallback: (editor, view) => this.sort("desc", editor),
+        editorCheckCallback: (checking, editor, view) => {
+          if (checking) {
+            return this.hasMultilineSelection(editor);
+          }
+          this.sort(editor, "desc");
+        },
       });
     }
 
     /**
-     * @param {"asc" | "desc"} direction
+     * Check if multiple lines are selected in the editor.
+     *
      * @param {obsidian.Editor} editor
+     * @returns {boolean}
      */
-    sort(direction, editor) {
+    hasMultilineSelection(editor) {
       const startLine = editor.getCursor("from").line;
       const endLine = editor.getCursor("to").line;
-      if (startLine === endLine) return;
+      return endLine > startLine;
+    }
+
+    /**
+     * Sort the selected lines in the editor.
+     *
+     * @param {obsidian.Editor} editor
+     * @param {"asc" | "desc"} direction
+     */
+    sort(editor, direction) {
+      const startLine = editor.getCursor("from").line;
+      const endLine = editor.getCursor("to").line;
+      console.assert(endLine > startLine, "Expected multiline selection");
 
       const lines = editor.getValue().split("\n");
       const selectedLines = lines.slice(startLine, endLine + 1);
-      console.assert(selectedLines.length > 1, "Expected more than 1 line");
+      console.assert(selectedLines.length > 1, "Expected multiple lines");
+
       selectedLines.sort((a, b) => {
         const result = compare(a.trim(), b.trim());
         return direction === "desc" ? -result : result;
