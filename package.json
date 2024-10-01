@@ -9,7 +9,7 @@
     "test": "prettier --check . && tsc"
   },
   "dependencies": {
-    "obsidian": ">=1.6.0"
+    "obsidian": ">=1.7.2"
   },
   "devDependencies": {
     "prettier": "^3.3.3",
