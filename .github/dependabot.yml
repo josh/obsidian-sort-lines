@@ -5,6 +5,9 @@ updates:
     versioning-strategy: widen
     schedule:
       interval: "weekly"
+    ignore:
+      - dependency-name: "@types/*"
+        update-types: ["version-update:semver-patch"]
 
   - package-ecosystem: "github-actions"
     directory: "/"
