@@ -4,9 +4,9 @@ updates:
     directory: "/"
     versioning-strategy: widen
     schedule:
-      interval: "monthly"
+      interval: "weekly"
 
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      interval: "monthly"
+      interval: "weekly"
