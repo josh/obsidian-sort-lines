@@ -11,19 +11,11 @@ jobs:
   release:
     runs-on: ubuntu-slim-amd64
 
-    env:
-      GITEA_CLI_REPO: ${{ gitea.repository }}
-      GITEA_TOKEN: ${{ gitea.token }}
-      TAG: ${{ gitea.ref_name }}
-
     steps:
       - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
 
       - name: Create draft release
+        env:
+          GITEA_TOKEN: ${{ gitea.token }}
         run: |
-          gt release view "$TAG" >/dev/null ||
-            gt release create "$TAG" --draft --verify-tag
-
-      - name: Upload assets
-        run: |
-          gt release upload "$TAG" main.js manifest.json --clobber
+          gt release create "$GITEA_REF_NAME" main.js manifest.json --draft --verify-tag
