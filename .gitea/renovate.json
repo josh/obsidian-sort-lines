@@ -1,4 +1,10 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "rangeStrategy": "widen"
+  "rangeStrategy": "widen",
+  "packageRules": [
+    {
+      "matchManagers": ["github-actions"],
+      "rangeStrategy": "replace"
+    }
+  ]
 }
